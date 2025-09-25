@@ -1,6 +1,7 @@
 local gpu_adapters = require('utils.gpu-adapter')
 local backdrops = require('utils.backdrops')
 local colors = require('colors.custom')
+local fonts = require('config.fonts')
 
 return {
    max_fps = 120,
@@ -21,8 +22,8 @@ return {
    -- color scheme
    colors = colors,
 
-   -- background: pass in `true` if you want wezterm to start with focus mode on (no bg images)
-   background = backdrops:initial_options(false),
+   -- background: start with focus mode on (no bg images by default)
+   background = backdrops:initial_options(true),
 
    -- scrollbar
    enable_scroll_bar = true,
@@ -30,10 +31,11 @@ return {
    -- tab bar
    enable_tab_bar = true,
    hide_tab_bar_if_only_one_tab = false,
-   use_fancy_tab_bar = false,
+   use_fancy_tab_bar = true,
    tab_max_width = 25,
-   show_tab_index_in_tab_bar = false,
+   show_tab_index_in_tab_bar = true,
    switch_to_last_active_tab_when_closing_tab = true,
+   show_close_tab_button_in_tabs = true,
 
    -- command palette
    command_palette_fg_color = '#b4befe',
@@ -51,9 +53,9 @@ return {
    adjust_window_size_when_changing_font_size = false,
    window_close_confirmation = 'NeverPrompt',
    window_frame = {
-      active_titlebar_bg = '#090909',
-      -- font = fonts.font,
-      -- font_size = fonts.font_size,
+      active_titlebar_bg = colors.tab_bar.background,
+      font = fonts.font,
+      font_size = 15,
    },
    -- inactive_pane_hsb = {
    --    saturation = 0.9,

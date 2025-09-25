@@ -54,14 +54,19 @@ local keys = {
    { key = 'Backspace',  mods = mod.SUPER,     action = act.SendString '\u{15}' },
 
    -- copy/paste --
-   { key = 'c',          mods = 'CTRL|SHIFT',  action = act.CopyTo('Clipboard') },
-   { key = 'v',          mods = 'CTRL|SHIFT',  action = act.PasteFrom('Clipboard') },
+   { key = 'c',          mods = mod.SUPER,  action = act.CopyTo('Clipboard') },
+   { key = 'v',          mods = mod.SUPER,  action = act.PasteFrom('Clipboard') },
 
    -- tabs --
    -- tabs: spawn+close
    { key = 't',          mods = mod.SUPER,     action = act.SpawnTab('DefaultDomain') },
    { key = 't',          mods = mod.SUPER_REV, action = act.SpawnTab({ DomainName = 'wsl:ubuntu-fish' }) },
    { key = 'w',          mods = mod.SUPER_REV, action = act.CloseCurrentTab({ confirm = false }) },
+
+   -- tabs: quick open SSH domains
+   { key = '1',          mods = mod.SUPER_REV, action = act.SpawnTab({ DomainName= 'cc-master' }) },
+   { key = '2',          mods = mod.SUPER_REV, action = act.SpawnTab({ DomainName='aku-master' }) },
+   { key = '3',          mods = mod.SUPER_REV, action = act.SpawnTab({ DomainName='chomoe' }) },
 
    -- tabs: navigation
    { key = '[',          mods = mod.SUPER,     action = act.ActivateTabRelative(-1) },
@@ -217,6 +222,16 @@ local keys = {
          timemout_milliseconds = 1000,
       }),
    },
+-- 切换到标签 1
+{ key = '1', mods = mod.SUPER, action = act.ActivateTab(0) },
+-- 切换到标签 2
+{ key = '2', mods = mod.SUPER, action = act.ActivateTab(1) },
+-- 切换到标签 3
+{ key = '3', mods = mod.SUPER, action = act.ActivateTab(2) },
+-- 切换到标签 4
+{ key = '4', mods = mod.SUPER, action = act.ActivateTab(3) },
+{ key = '5', mods = mod.SUPER, action = act.ActivateTab(4) },
+{ key = '6', mods = mod.SUPER, action = act.ActivateTab(5) },
 }
 
 -- stylua: ignore

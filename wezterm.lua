@@ -1,4 +1,5 @@
 local Config = require('config')
+local wezterm = require 'wezterm'
 
 require('utils.backdrops')
    -- :set_focus('#000000')
@@ -11,6 +12,9 @@ require('events.right-status').setup({ date_format = '%a %H:%M:%S' })
 require('events.tab-title').setup({ hide_active_tab_unseen = false, unseen_icon = 'numbered_box' })
 require('events.new-tab-button').setup()
 require('events.gui-startup').setup()
+
+local resurrect = wezterm.plugin.require('https://github.com/MLFlexer/resurrect.wezterm')
+wezterm.on("gui-startup", resurrect.state_manager.resurrect_on_gui_startup)
 
 return Config:init()
    :append(require('config.appearance'))
